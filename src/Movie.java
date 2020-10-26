@@ -46,4 +46,8 @@ public class Movie {
 	public String movieCsvRecord() {
 		return String.format("%d,%s,%d,%d,%f", movieID, movieTitle, movieValue,length,rating);
 	}
+	
+	public void Hej() {
+		System.out.println("hej");
+	}
 }
