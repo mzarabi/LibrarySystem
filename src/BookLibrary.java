@@ -23,7 +23,7 @@ public class BookLibrary {
 		for (int i = 0; i < books.size(); i++) {
 			if ((int) books.get(i).getBookID() == id) {
 				books.remove(i);
-				System.out.println("Successfully lended");
+				System.out.println("Successfully removed product");
 
 			}
 		}

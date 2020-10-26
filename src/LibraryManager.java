@@ -34,7 +34,7 @@ public class LibraryManager {
 			case REGISTER:
 				addProduct();
 				break;
-			case CHECKOUT:
+			case DEREGISTER:
 				removeCommand(arguments);
 				break;
 			case INFO:
@@ -127,7 +127,7 @@ public class LibraryManager {
 		bookLibrary.bookInfo(bookID);
 	}
 
-	private void addMovieCommand() throws FileNotFoundException {
+	private void addMovieCommand() throws IOException {
 
 		int movieID;
 		String movieTitle;
@@ -171,8 +171,8 @@ public class LibraryManager {
 			return Command.LIST;
 		case "quit":
 			return Command.QUIT;
-		case "checkout":
-			return Command.CHECKOUT;
+		case "deregister":
+			return Command.DEREGISTER;
 		case "info":
 			return Command.INFO;
 		default:

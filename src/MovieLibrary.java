@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
@@ -11,7 +13,7 @@ public class MovieLibrary {
 		movies = new ArrayList<Movie>();
 	}
 
-	public void addMovie(Movie movie) throws FileNotFoundException {
+	public void addMovie(Movie movie) throws IOException {
 		movies.add(movie);
 		writeMovieToFile();
 		
@@ -38,14 +40,14 @@ public class MovieLibrary {
 		}
 	return total;
 	}
-	public void writeMovieToFile() throws FileNotFoundException {
-		File bookFile = new File("library.csv");
-		PrintWriter wb = new PrintWriter (bookFile);
+	public void writeMovieToFile() throws IOException {
+		String filePath = "library.csv";
+		FileWriter fileWriter = new FileWriter(filePath, true);
 		for(Movie movie : movies) {
 			String csvRecord = movie.movieCsvRecord();
-			wb.println(csvRecord);
+			fileWriter.write(csvRecord);
 		}
-		wb.close();
+		fileWriter.close();
 		
 	}
 }
