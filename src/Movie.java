@@ -6,7 +6,6 @@ public class Movie {
 	private int movieValue;
 	private float rating;
 	private int length;
-	private String yoMama;
 
 	public Movie(int movieID, String movieTitle, int movieValue, float rating, int length) {
 		super();
@@ -48,7 +47,5 @@ public class Movie {
 		return String.format("%d,%s,%d,%d,%f", movieID, movieTitle, movieValue,length,rating);
 	}
 	
-	public void Hej() {
-		System.out.println("hej");
-	}
+	
 }
