@@ -6,6 +6,7 @@ public class Movie {
 	private int movieValue;
 	private float rating;
 	private int length;
+	private String yoMama;
 
 	public Movie(int movieID, String movieTitle, int movieValue, float rating, int length) {
 		super();
