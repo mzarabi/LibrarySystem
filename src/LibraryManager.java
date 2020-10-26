@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 enum Command {
@@ -11,14 +12,14 @@ public class LibraryManager {
 	MovieLibrary movieLibrary = new MovieLibrary();
 	Scanner sc = new Scanner(System.in);
 
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) throws IOException {
 
 		LibraryManager manager = new LibraryManager();
 		manager.start();
 
 	}
 
-	public void start() throws FileNotFoundException {
+	public void start() throws IOException {
 
 		boolean running = true;
 
@@ -54,7 +55,7 @@ public class LibraryManager {
 		sc.close();
 	}
 
-	public void addProduct() throws FileNotFoundException {
+	public void addProduct() throws IOException {
 		System.out.println("What are you registering? Book (b), Movie (m)");
 		String userInput = sc.nextLine();
 
@@ -71,7 +72,7 @@ public class LibraryManager {
 		}
 	}
 
-	private void addBookCommand() throws FileNotFoundException {
+	private void addBookCommand() throws IOException {
 
 		int bookID;
 		String bookTitle;

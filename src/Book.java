@@ -45,6 +45,6 @@ public class Book {
 	}
 	
 	public String bookCsvRecord() {
-		return String.format("%d,%s,%d,%d,%s", bookID,bookTitle,bookValue,pages,author);
+		return String.format("%d,%s,%d,%d,%s", bookID,bookTitle,bookValue,pages,author+"\n");
 	}
 }
