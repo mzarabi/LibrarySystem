@@ -1,11 +1,7 @@
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Serializable;
+import java.io.*;
 import java.util.*;
 
-public class BookLibrary implements Serializable {
+public class BookLibrary{
 
 	ArrayList<Book> books;
 
@@ -59,7 +55,7 @@ public class BookLibrary implements Serializable {
 
 	public void writeBookToFile() throws IOException {
 
-		String filePath = "library.csv";
+		String filePath = "booklibrary.csv";
 		FileWriter fileWriter = new FileWriter(filePath);
 
 		for (Book book : books) {
@@ -70,9 +66,8 @@ public class BookLibrary implements Serializable {
 	}
 
 	public Book readFile() throws IOException {
-		books = new ArrayList<Book>();
 		
-		FileReader fr  = new FileReader("/Users/marcuszarabi/eclipse-workspace/LibrarySystem/library.csv");
+		FileReader fr  = new FileReader("booklibrary.csv");
 		Scanner scanner = new Scanner(fr);
 		while (scanner.hasNextLine()) {
 			String csvRecord = scanner.nextLine();
