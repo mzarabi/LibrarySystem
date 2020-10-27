@@ -1,4 +1,4 @@
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -7,7 +7,7 @@ enum Command {
 }
 
 public class LibraryManager {
-
+	
 	BookLibrary bookLibrary = new BookLibrary();
 	MovieLibrary movieLibrary = new MovieLibrary();
 	Scanner sc = new Scanner(System.in);
@@ -22,6 +22,11 @@ public class LibraryManager {
 	public void start() throws IOException {
 
 		boolean running = true;
+		File checkFile = new File("library.csv");
+		if(checkFile.exists()) {
+			bookLibrary.readFile();
+		}
+		
 
 		while (running) {
 
@@ -74,7 +79,7 @@ public class LibraryManager {
 
 	private void addBookCommand() throws IOException {
 
-		int bookID;
+		int bookID = 0;
 		String bookTitle;
 		int bookValue;
 		int pages;
@@ -83,6 +88,7 @@ public class LibraryManager {
 		System.out.println("\nEnter product ID: ");
 		bookID = sc.nextInt();
 		sc.nextLine();
+		
 		System.out.println("\nEnter title:  ");
 		bookTitle = sc.nextLine();
 
@@ -101,7 +107,7 @@ public class LibraryManager {
 
 	}
 
-	private void removeCommand(String[] arguments) {
+	private void removeCommand(String[] arguments) throws IOException {
 		int ID;
 		try {
 			ID = Integer.parseInt(arguments[0]);
@@ -111,20 +117,21 @@ public class LibraryManager {
 
 		}
 		bookLibrary.removeBook(ID);
-		movieLibrary.removeMovie(ID);
+//		movieLibrary.removeMovie(ID);
 
 	}
 
 	private void infoCommand(String[] arguments) {
-		int bookID;
+		int ID;
 		try {
-			bookID = Integer.parseInt(arguments[0]);
+			ID = Integer.parseInt(arguments[0]);
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Syntax error");
 			return;
 
 		}
-		bookLibrary.bookInfo(bookID);
+		bookLibrary.bookInfo(ID);
+//		movieLibrary.movieInfo(ID);
 	}
 
 	private void addMovieCommand() throws IOException {
@@ -157,7 +164,8 @@ public class LibraryManager {
 
 	}
 
-	private void displayInventory() {
+	private void displayInventory() throws IOException {
+		
 		System.out.println(bookLibrary);
 		System.out.println(movieLibrary);
 	}
