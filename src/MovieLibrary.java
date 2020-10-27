@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,11 +19,12 @@ public class MovieLibrary {
 		writeMovieToFile();
 		
 	}
-	public void removeMovie(int id) {
+	public void removeMovie(int id) throws IOException {
 		for (int i = 0; i < movies.size(); i++) {
 			if ((int) movies.get(i).getMovieID() == id) {
 				movies.remove(i);
 				System.out.println("Successfully removed movie");
+				writeMovieToFile();
 
 			}
 		}
@@ -54,13 +56,27 @@ public class MovieLibrary {
 	return total;
 	}
 	public void writeMovieToFile() throws IOException {
-		String filePath = "library.csv";
-		FileWriter fileWriter = new FileWriter(filePath, true);
-		for(Movie movie : movies) {
-			String csvRecord = movie.movieCsvRecord();
-			fileWriter.write(csvRecord);
+
+		String filePath = "movielibrary.csv";
+		FileWriter fileWriter = new FileWriter(filePath);
+
+		for (Movie movie : movies) {
+			fileWriter.write(movie.movieCsvRecord());
 		}
 		fileWriter.close();
+
+	}
+
+	public Movie readFile() throws IOException {
+		
+		FileReader fr  = new FileReader("movielibrary.csv");
+		Scanner scanner = new Scanner(fr);
+		while (scanner.hasNextLine()) {
+			String csvRecord = scanner.nextLine();
+			movies.add(Movie.parseMovie(csvRecord));
+					
+		}
+		return null;
 		
 	}
 }

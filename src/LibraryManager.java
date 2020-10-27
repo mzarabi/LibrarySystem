@@ -22,12 +22,16 @@ public class LibraryManager {
 	public void start() throws IOException {
 
 		boolean running = true;
-		File checkFile = new File("library.csv");
-		if(checkFile.exists()) {
+		File bookFile = new File("booklibrary.csv");
+		File movieFile = new File("movielibrary.csv");
+		if(bookFile.exists()) {
 			bookLibrary.readFile();
 		}
+			if(movieFile.exists()) {
+				movieLibrary.readFile();
+			}
 		
-
+		
 		while (running) {
 
 			String userInput = sc.nextLine();
@@ -123,7 +127,7 @@ public class LibraryManager {
 
 		}
 		bookLibrary.removeBook(ID);
-//		movieLibrary.removeMovie(ID);
+		movieLibrary.removeMovie(ID);
 
 	}
 
@@ -137,7 +141,7 @@ public class LibraryManager {
 
 		}
 		bookLibrary.bookInfo(ID);
-//		movieLibrary.movieInfo(ID);
+		movieLibrary.movieInfo(ID);
 	}
 
 	private void addMovieCommand() throws IOException {

@@ -1,6 +1,4 @@
-import java.io.Serializable;
-
-public class Book implements Serializable{
+public class Book {
 	
 	private int bookID;
 	private String bookTitle;
