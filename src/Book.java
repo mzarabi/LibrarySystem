@@ -37,11 +37,11 @@ public class Book {
 	}
 
 	public String toString() {
-		return String.format("\n"+bookID+" (Book) " + bookTitle+": "+"Value "+bookValue+"kr, "+"Pages "+pages+"st, "+"Author "+author+".");
+		return String.format(bookID+" (Book) " + bookTitle+": "+"Value "+bookValue+"kr, "+"Pages "+pages+"st, "+"Author "+author+"."+"\n");
 	}
 	
 	public String bookString() {
-		return String.format("\n"+bookID+" (Book): " + bookTitle+".");
+		return String.format(bookID+" (Book): " + bookTitle+"."+"\n");
 	}
 	
 	public String bookCsvRecord() {

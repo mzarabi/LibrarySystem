@@ -7,7 +7,7 @@ public class Movie {
 	private float rating;
 	private int length;
 
-	public Movie(int movieID, String movieTitle, int movieValue, float rating, int length) {
+	public Movie(int movieID, String movieTitle, int movieValue, int length,float rating) {
 		super();
 		this.movieID = movieID;
 		this.movieTitle = movieTitle;
@@ -37,14 +37,14 @@ public class Movie {
 	}
 
 	public String toString() {
-		return String.format("(Movie) " + movieTitle+": "+"Value "+movieValue+"kr, "+"Length "+length+", "+"Rating "+rating+".");
+		return String.format(movieID + " (Movie) " + movieTitle+": "+"Value "+movieValue+"kr, "+"Length "+length+", "+"Rating "+rating+"."+"\n");
 	}
 	
 	public String printString() {
-		return String.format("\n" + movieID + " (Movie): " + movieTitle );
+		return String.format(movieID + " (Movie): " + movieTitle+"\n");
 	}	
 	public String movieCsvRecord() {
-		return String.format("%d,%s,%d,%d,%f", movieID, movieTitle, movieValue,length,rating);
+		return String.format("%d,%s,%d,%d,%.2f", movieID, movieTitle, movieValue,length,rating+"\n");
 	}	
 	public static Movie parseMovie(String csvRecord) {
 		String[] values = csvRecord.split(",");
@@ -53,8 +53,7 @@ public class Movie {
 		int movieValue = Integer.parseInt(values[2]);
 		int length = Integer.parseInt(values[3]);
 		float rating = Float.parseFloat(values[4]);
-		return new Movie(movieID, movieTitle, movieValue, rating, length);
-		
+		return new Movie(movieID, movieTitle, movieValue, length, rating);
 		
 	}
 }

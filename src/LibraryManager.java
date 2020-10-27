@@ -169,7 +169,7 @@ public class LibraryManager {
 		sc.nextLine();
 
 		System.out.println("Successfully registered " + movieTitle);
-		Movie newMovie = new Movie(movieID, movieTitle, movieValue, rating, length);
+		Movie newMovie = new Movie(movieID, movieTitle, movieValue, length, rating);
 		movieLibrary.addMovie(newMovie);
 
 	}
