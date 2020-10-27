@@ -1,4 +1,6 @@
-public class Book {
+import java.io.Serializable;
+
+public class Book implements Serializable{
 	
 	private int bookID;
 	private String bookTitle;
@@ -46,5 +48,16 @@ public class Book {
 	
 	public String bookCsvRecord() {
 		return String.format("%d,%s,%d,%d,%s", bookID,bookTitle,bookValue,pages,author+"\n");
+	}
+	public static Book parseBook(String csvRecord) {
+		String[] values = csvRecord.split(",");
+		int bookID = Integer.parseInt(values[0]);
+		String bookTitle = values[1];
+		int bookValue = Integer.parseInt(values[2]);
+		int pages = Integer.parseInt(values[3]);
+		String author = values[4];
+		return new Book(bookID,bookTitle,bookValue,pages,author);
+		
+		
 	}
 }
