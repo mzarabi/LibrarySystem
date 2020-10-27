@@ -22,11 +22,24 @@ public class MovieLibrary {
 		for (int i = 0; i < movies.size(); i++) {
 			if ((int) movies.get(i).getMovieID() == id) {
 				movies.remove(i);
-				System.out.println("Successfully lended");
+				System.out.println("Successfully removed movie");
 
 			}
 		}
 
+	}
+	
+	public void movieInfo(int id) {
+		boolean found = false;
+		for (Movie movie : movies) {
+			if(movie.getMovieID()==id) {
+				System.out.println(movie.toString());
+				found=true;
+			}
+		}
+		if(!found) {
+			System.out.println("Error! No movie with id "+id+" registered");
+		}
 	}
 	
 	public String toString() {
