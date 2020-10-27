@@ -46,4 +46,15 @@ public class Movie {
 	public String movieCsvRecord() {
 		return String.format("%d,%s,%d,%d,%f", movieID, movieTitle, movieValue,length,rating);
 	}	
+	public static Movie parseMovie(String csvRecord) {
+		String[] values = csvRecord.split(",");
+		int movieID = Integer.parseInt(values[0]);
+		String movieTitle = values[1];
+		int movieValue = Integer.parseInt(values[2]);
+		int length = Integer.parseInt(values[3]);
+		float rating = Float.parseFloat(values[4]);
+		return new Movie(movieID, movieTitle, movieValue, rating, length);
+		
+		
+	}
 }
