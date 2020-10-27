@@ -20,8 +20,8 @@ public class BookLibrary{
 	public void removeBook(int id) throws IOException {
 		for (int i = 0; i < books.size(); i++) {
 			if ((int) books.get(i).getBookID() == id) {
+				System.out.println("Successfully removed " + books.get(i).getTitle());
 				books.remove(i);
-				System.out.println("Successfully removed book");
 				writeBookToFile();
 
 			}

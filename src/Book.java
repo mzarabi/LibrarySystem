@@ -56,6 +56,5 @@ public class Book {
 		String author = values[4];
 		return new Book(bookID,bookTitle,bookValue,pages,author);
 		
-		
 	}
 }

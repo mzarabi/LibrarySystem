@@ -22,8 +22,8 @@ public class MovieLibrary {
 	public void removeMovie(int id) throws IOException {
 		for (int i = 0; i < movies.size(); i++) {
 			if ((int) movies.get(i).getMovieID() == id) {
+				System.out.println("Successfully removed " + movies.get(i).getTitle());
 				movies.remove(i);
-				System.out.println("Successfully removed movie");
 				writeMovieToFile();
 
 			}
