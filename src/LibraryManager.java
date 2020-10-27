@@ -48,12 +48,18 @@ public class LibraryManager {
 			case LIST:
 				displayInventory();
 				break;
+			case CHECKOUT:
+				lendingCommand(arguments);
+				break;
+			case CHECKIN:
+				returnLentCommand(arguments);
+				break;
 			case QUIT:
 				running = false;
 				System.out.println("Good bye!");
 				break;
 			default:
-				System.out.println("Unknown command");
+				System.out.println("Unknown command, Please try again");
 			}
 		}
 
@@ -170,6 +176,33 @@ public class LibraryManager {
 		System.out.println(movieLibrary);
 	}
 
+	private void lendingCommand(String[] arguments) throws IOException {
+		
+		String lendingStatus = "(L)";
+		int ID;
+		try {
+			ID = Integer.parseInt(arguments[0]);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Not a valid ID number");
+			return;	
+		}
+		
+	}
+	
+	private void returnLentCommand(String[] arguments) throws IOException {
+		
+		String lendingStatus = "(L)";
+		int ID;
+		try {
+			ID = Integer.parseInt(arguments[0]);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Not a valid ID number");
+			return;	
+		}
+		
+	}
+	
+	
 	private Command parseCommand(String userInput) {
 		String commandString = userInput.split(" ")[0];
 		switch (commandString) {
