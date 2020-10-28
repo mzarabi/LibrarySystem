@@ -22,6 +22,7 @@ public class LibraryManager {
 	public void start() throws IOException {
 
 		boolean running = true;
+		System.out.println("Welcome!");
 		File bookFile = new File("booklibrary.csv");
 		File movieFile = new File("movielibrary.csv");
 		if(bookFile.exists()) {
@@ -30,7 +31,7 @@ public class LibraryManager {
 			if(movieFile.exists()) {
 				movieLibrary.readFile();
 			}
-		
+		System.out.println("Succesfully initialized system state from files.");
 		
 		while (running) {
 
