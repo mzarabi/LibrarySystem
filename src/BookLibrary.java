@@ -12,6 +12,7 @@ public class BookLibrary{
 
 	public void addBook(Book book) throws IOException {
 		books.add(book);
+		Collections.sort(books);
 		writeBookToFile();
 		
 
