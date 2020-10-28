@@ -1,5 +1,5 @@
-public class Book {
-	
+public class Book implements Comparable<Book> {
+
 	private int bookID;
 	private String bookTitle;
 	private int bookValue;
@@ -37,16 +37,18 @@ public class Book {
 	}
 
 	public String toString() {
-		return String.format(bookID+" (Book) " + bookTitle+": "+"Value "+bookValue+"kr, "+"Pages "+pages+"st, "+"Author "+author+"."+"\n");
+		return String.format(bookID + " (Book) " + bookTitle + ": " + "Value " + bookValue + "kr, " + "Pages " + pages
+				+ "st, " + "Author " + author + "." + "\n");
 	}
-	
+
 	public String bookString() {
-		return String.format(bookID+" (Book): " + bookTitle+"."+"\n");
+		return String.format(bookID + " (Book): " + bookTitle + "." + "\n");
 	}
-	
+
 	public String bookCsvRecord() {
-		return String.format("%d,%s,%d,%d,%s", bookID,bookTitle,bookValue,pages,author+"\n");
+		return String.format("%d,%s,%d,%d,%s", bookID, bookTitle, bookValue, pages, author + "\n");
 	}
+
 	public static Book parseBook(String csvRecord) {
 		String[] values = csvRecord.split(",");
 		int bookID = Integer.parseInt(values[0]);
@@ -54,7 +56,12 @@ public class Book {
 		int bookValue = Integer.parseInt(values[2]);
 		int pages = Integer.parseInt(values[3]);
 		String author = values[4];
-		return new Book(bookID,bookTitle,bookValue,pages,author);
-		
+		return new Book(bookID, bookTitle, bookValue, pages, author);
+
+	}
+
+	@Override
+	public int compareTo(Book book) {
+		return this.bookID > book.bookID ? 1 : this.bookID < book.bookID ? -1 : 0;
 	}
 }
