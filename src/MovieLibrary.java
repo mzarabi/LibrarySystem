@@ -16,6 +16,7 @@ public class MovieLibrary {
 
 	public void addMovie(Movie movie) throws IOException {
 		movies.add(movie);
+		Collections.sort(movies);
 		writeMovieToFile();
 		
 	}
