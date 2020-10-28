@@ -1,5 +1,5 @@
 
-public class Movie {
+public class Movie implements Comparable<Movie> {
 
 	private int movieID;
 	private String movieTitle;
@@ -7,7 +7,7 @@ public class Movie {
 	private float rating;
 	private int length;
 
-	public Movie(int movieID, String movieTitle, int movieValue, int length,float rating) {
+	public Movie(int movieID, String movieTitle, int movieValue, int length, float rating) {
 		super();
 		this.movieID = movieID;
 		this.movieTitle = movieTitle;
@@ -37,15 +37,18 @@ public class Movie {
 	}
 
 	public String toString() {
-		return String.format(movieID + " (Movie) " + movieTitle+": "+"Value "+movieValue+"kr, "+"Length "+length+", "+"Rating "+rating+"."+"\n");
+		return String.format(movieID + " (Movie) " + movieTitle + ": " + "Value " + movieValue + "kr, " + "Length "
+				+ length + ", " + "Rating " + rating + "." + "\n");
 	}
-	
+
 	public String printString() {
-		return String.format(movieID + " (Movie): " + movieTitle+"\n");
-	}	
+		return String.format(movieID + " (Movie): " + movieTitle + "\n");
+	}
+
 	public String movieCsvRecord() {
-		return String.format("%d,%s,%d,%d,%.2f", movieID, movieTitle, movieValue,length,rating+"\n");
-	}	
+		return String.format("%d,%s,%d,%d,%s", movieID, movieTitle, movieValue, length, rating + "\n");
+	}
+
 	public static Movie parseMovie(String csvRecord) {
 		String[] values = csvRecord.split(",");
 		int movieID = Integer.parseInt(values[0]);
@@ -54,6 +57,11 @@ public class Movie {
 		int length = Integer.parseInt(values[3]);
 		float rating = Float.parseFloat(values[4]);
 		return new Movie(movieID, movieTitle, movieValue, length, rating);
-		
+
+	}
+
+	@Override
+	public int compareTo(Movie movie) {
+		return this.movieID > movie.movieID ? 1 : this.movieID < movie.movieID ? -1 : 0;
 	}
 }
