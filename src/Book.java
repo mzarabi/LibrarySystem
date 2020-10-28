@@ -62,6 +62,6 @@ public class Book implements Comparable<Book> {
 
 	@Override
 	public int compareTo(Book book) {
-		return this.bookID > book.bookID ? 1 : this.bookID < book.bookID ? -1 : 0;
+		 return Integer.compare(bookID, book.bookID);
 	}
 }
