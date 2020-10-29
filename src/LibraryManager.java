@@ -103,7 +103,7 @@ public class LibraryManager {
 
 		Book newBook = new Book(bookID, bookTitle, bookValue, pages, author);
 		productLibrary.addProduct(newBook);
-		System.out.println("Successfully registered " + bookTitle);
+		
 
 	}
 
@@ -130,7 +130,7 @@ public class LibraryManager {
 		System.out.println("\nEnter rating: ");
 		rating = sc.nextFloat();
 		sc.nextLine();
-		System.out.println("Successfully registered " + movieTitle);
+		
 		Movie newMovie = new Movie(movieID, movieTitle, movieValue, length, rating);
 		productLibrary.addProduct(newMovie);
 
