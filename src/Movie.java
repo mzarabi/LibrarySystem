@@ -1,31 +1,13 @@
 
-public class Movie implements Comparable<Movie> {
+public class Movie extends Product implements ProductInterface {
 
-	private int movieID;
-	private String movieTitle;
-	private int movieValue;
 	private float rating;
 	private int length;
 
-	public Movie(int movieID, String movieTitle, int movieValue, int length, float rating) {
-		super();
-		this.movieID = movieID;
-		this.movieTitle = movieTitle;
-		this.movieValue = movieValue;
+	public Movie(int id, String title, int value, int length, float rating) {
+		super(id, title, value);
 		this.rating = rating;
 		this.length = length;
-	}
-
-	public int getMovieID() {
-		return movieID;
-	}
-
-	public String getTitle() {
-		return movieTitle;
-	}
-
-	public int getValue() {
-		return movieValue;
 	}
 
 	public float getRating() {
@@ -37,31 +19,28 @@ public class Movie implements Comparable<Movie> {
 	}
 
 	public String toString() {
-		return String.format(movieID + " (Movie) " + movieTitle + ": " + "Value " + movieValue + "kr, " + "Length "
-				+ length + ", " + "Rating " + rating + "." + "\n");
+		return String.format(id + " (Movie): " + title + "." + " (in stock)" + "\n");
 	}
 
-	public String printString() {
-		return String.format(movieID + " (Movie): " + movieTitle + "\n");
-	}
-
-	public String movieCsvRecord() {
-		return String.format("%d,%s,%d,%d,%s", movieID, movieTitle, movieValue, length, rating + "\n");
-	}
-
-	public static Movie parseMovie(String csvRecord) {
-		String[] values = csvRecord.split(",");
-		int movieID = Integer.parseInt(values[0]);
-		String movieTitle = values[1];
-		int movieValue = Integer.parseInt(values[2]);
-		int length = Integer.parseInt(values[3]);
-		float rating = Float.parseFloat(values[4]);
-		return new Movie(movieID, movieTitle, movieValue, length, rating);
+	@Override
+	public String printInfo() {
+		return String.format(id + " (Movie): " + title + ": " + "Value " + value + "kr, " + "Length " + length + "m, "
+				+ "Rating " + rating + "." + "\n");
 
 	}
 
 	@Override
-	public int compareTo(Movie movie) {
-		return this.movieID > movie.movieID ? 1 : this.movieID < movie.movieID ? -1 : 0;
+	public String csvRecord() {
+		return String.format("movie," + "%d,%s,%d,%d,%s", id, title, value, length, rating + "\n");
+	}
+
+	public static Movie parseProduct(String csvRecord) {
+		String[] values = csvRecord.split(",");
+		int movieID = Integer.parseInt(values[1]);
+		String movieTitle = values[2];
+		int movieValue = Integer.parseInt(values[3]);
+		int length = Integer.parseInt(values[4]);
+		float rating = Float.parseFloat(values[5]);
+		return new Movie(movieID, movieTitle, movieValue, length, rating);
 	}
 }
