@@ -11,22 +11,35 @@ public class ProductLibrary {
 	}
 
 	public void addProduct(Product product) throws IOException {
+
+		for (Product items : products) {
+			if (items.getId() == product.getId()) {
+				System.out.println("Error: Product with ID " + product.getId() + " is already registered.");
+				return;
+			}
+		}
 		products.add(product);
 		Collections.sort(products);
 		writeBookToFile();
+		System.out.println("Successfully registered " + product.getTitle());
 
 	}
 
 	public void removeProduct(int id) throws IOException {
+		boolean found = false;
 		for (int i = 0; i < products.size(); i++) {
 			if (products.get(i).getId() == id) {
-				System.out.println("Successfully removed " + products.get(i).getTitle());
+				System.out.println("Successfully deregistered " + products.get(i).getTitle());
 				products.remove(i);
 				writeBookToFile();
+				found = true;
 
 			}
-		}
 
+		}if(!found) {
+			System.out.println("Error! No product with id " + id + " registered");
+		}
+		
 	}
 
 	public void productInfo(int id) {
