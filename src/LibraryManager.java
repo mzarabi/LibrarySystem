@@ -3,13 +3,12 @@ import java.io.IOException;
 import java.util.Scanner;
 
 enum Command {
-	LIST, CHECKOUT, CHECKIN, REGISTER, DEREGISTER, INFO, QUIT, UNKNOWN
+	LIST, CHECKOUT, CHECKIN, REGISTER, DEREGISTER, INFO, QUIT, UNKNOWN, MOVIE, BOOK
 }
 
 public class LibraryManager {
-	
-	BookLibrary bookLibrary = new BookLibrary();
-	MovieLibrary movieLibrary = new MovieLibrary();
+
+	ProductLibrary productLibrary = new ProductLibrary();
 	Scanner sc = new Scanner(System.in);
 
 	public static void main(String[] args) throws IOException {
@@ -23,18 +22,18 @@ public class LibraryManager {
 
 		boolean running = true;
 		System.out.println("Welcome!");
-		File bookFile = new File("booklibrary.csv");
-		File movieFile = new File("movielibrary.csv");
-		if(bookFile.exists()) {
-			bookLibrary.readFile();
-		}
-			if(movieFile.exists()) {
-				movieLibrary.readFile();
-			}
-		System.out.println("Succesfully initialized system state from files.");
-		
-		while (running) {
+		File bookFile = new File("library.csv");
 
+		if (bookFile.exists()) {
+			productLibrary.readFile();
+		}
+
+		System.out.println("Succesfully initialized system state from files.");
+		System.out.println("\nCurrent inventory:");
+		System.out.println(productLibrary);
+
+		while (running) {
+			System.out.print("> ");
 			String userInput = sc.nextLine();
 			Command command = parseCommand(userInput);
 
@@ -42,7 +41,13 @@ public class LibraryManager {
 
 			switch (command) {
 			case REGISTER:
-				addProduct();
+				System.out.println("What are you registering? Book (b), Movie (m)");
+				break;
+			case BOOK:
+				addBookCommand();
+				break;
+			case MOVIE:
+				addMovieCommand();
 				break;
 			case DEREGISTER:
 				removeCommand(arguments);
@@ -63,29 +68,13 @@ public class LibraryManager {
 				running = false;
 				System.out.println("Good bye!");
 				break;
-			default:
-				System.out.println("Unknown command, Please try again");
+			case UNKNOWN:
+				System.out.println("Unknown command, please try again");
+
 			}
 		}
 
 		sc.close();
-	}
-
-	public void addProduct() throws IOException {
-		System.out.println("What are you registering? Book (b), Movie (m)");
-		String userInput = sc.nextLine();
-
-		switch (userInput) {
-		case "m":
-			addMovieCommand();
-			break;
-		case "b":
-			addBookCommand();
-			break;
-		default:
-			System.out.println("Unknown command");
-			return;
-		}
 	}
 
 	private void addBookCommand() throws IOException {
@@ -99,7 +88,7 @@ public class LibraryManager {
 		System.out.println("\nEnter product ID: ");
 		bookID = sc.nextInt();
 		sc.nextLine();
-		
+
 		System.out.println("\nEnter title:  ");
 		bookTitle = sc.nextLine();
 
@@ -113,36 +102,9 @@ public class LibraryManager {
 		author = sc.nextLine();
 
 		Book newBook = new Book(bookID, bookTitle, bookValue, pages, author);
-		bookLibrary.addBook(newBook);
+		productLibrary.addProduct(newBook);
 		System.out.println("Successfully registered " + bookTitle);
 
-	}
-
-	private void removeCommand(String[] arguments) throws IOException {
-		int ID;
-		try {
-			ID = Integer.parseInt(arguments[0]);
-		} catch (IndexOutOfBoundsException e) {
-			System.out.println("Failed to parse");
-			return;
-
-		}
-		bookLibrary.removeBook(ID);
-		movieLibrary.removeMovie(ID);
-
-	}
-
-	private void infoCommand(String[] arguments) {
-		int ID;
-		try {
-			ID = Integer.parseInt(arguments[0]);
-		} catch (IndexOutOfBoundsException e) {
-			System.out.println("Syntax error");
-			return;
-
-		}
-		bookLibrary.bookInfo(ID);
-		movieLibrary.movieInfo(ID);
 	}
 
 	private void addMovieCommand() throws IOException {
@@ -164,50 +126,75 @@ public class LibraryManager {
 
 		System.out.println("\nEnter length: ");
 		length = sc.nextInt();
-
+		sc.nextLine();
 		System.out.println("\nEnter rating: ");
 		rating = sc.nextFloat();
 		sc.nextLine();
-
 		System.out.println("Successfully registered " + movieTitle);
 		Movie newMovie = new Movie(movieID, movieTitle, movieValue, length, rating);
-		movieLibrary.addMovie(newMovie);
+		productLibrary.addProduct(newMovie);
 
+	}
+	
+
+	private void removeCommand(String[] arguments) throws IOException {
+		int ID;
+		try {
+			ID = Integer.parseInt(arguments[0]);
+		} catch (IndexOutOfBoundsException e) {
+			System.out.println("Failed to parse");
+			return;
+
+		}
+
+		productLibrary.removeProduct(ID);
+
+	}
+
+	private void infoCommand(String[] arguments) {
+		int ID;
+		try {
+			ID = Integer.parseInt(arguments[0]);
+		} catch (NumberFormatException e) {
+			System.out.println("Please enter a id");
+			return;
+
+		}
+		productLibrary.productInfo(ID);
 	}
 
 	private void displayInventory() throws IOException {
-		
-		System.out.println(bookLibrary);
-		System.out.println(movieLibrary);
+
+		System.out.println(productLibrary);
+
 	}
 
 	private void lendingCommand(String[] arguments) throws IOException {
-		
+
 		String lendingStatus = "(L)";
 		int ID;
 		try {
 			ID = Integer.parseInt(arguments[0]);
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Not a valid ID number");
-			return;	
+			return;
 		}
-		
+
 	}
-	
+
 	private void returnLentCommand(String[] arguments) throws IOException {
-		
+
 		String lendingStatus = "(L)";
 		int ID;
 		try {
 			ID = Integer.parseInt(arguments[0]);
 		} catch (IndexOutOfBoundsException e) {
 			System.out.println("Not a valid ID number");
-			return;	
+			return;
 		}
-		
+
 	}
-	
-	
+
 	private Command parseCommand(String userInput) {
 		String commandString = userInput.split(" ")[0];
 		switch (commandString) {
@@ -221,6 +208,10 @@ public class LibraryManager {
 			return Command.DEREGISTER;
 		case "info":
 			return Command.INFO;
+		case "m":
+			return Command.MOVIE;
+		case "b":
+			return Command.BOOK;
 		default:
 			return Command.UNKNOWN;
 		}
