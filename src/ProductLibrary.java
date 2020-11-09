@@ -1,45 +1,37 @@
 import java.io.*;
 import java.util.*;
 
-public class ProductLibrary {
+public class ProductLibrary implements LibraryInterface {
 
-	ArrayList<Product> products;
-
-	public ProductLibrary() {
-		products = new ArrayList<Product>();
-
-	}
-
-	public void addProduct(Product product) throws IOException {
+	public void addProduct(Product product) {
 
 		for (Product items : products) {
 			if (items.getId() == product.getId()) {
-				System.out.println("Error: Product with ID " + product.getId() + " is already registered.");
+				System.out.println("Error: Product with ID " + product.getId() + " is already registered.\n");
 				return;
 			}
 		}
 		products.add(product);
 		Collections.sort(products);
-		writeBookToFile();
-		System.out.println("Successfully registered " + product.getTitle());
+		writeProductToFile();
+		System.out.println("Successfully registered " + product.getTitle() + "\n");
 
 	}
 
-	public void removeProduct(int id) throws IOException {
+	public void removeProduct(int id) {
 		boolean found = false;
 		for (int i = 0; i < products.size(); i++) {
 			if (products.get(i).getId() == id) {
-				System.out.println("Successfully deregistered " + products.get(i).getTitle());
+				System.out.println("Successfully deregistered " + products.get(i).getTitle() + "\n");
 				products.remove(i);
-				writeBookToFile();
+				writeProductToFile();
 				found = true;
 
 			}
-
-		}if(!found) {
-			System.out.println("Error! No product with id " + id + " registered");
 		}
-		
+		if (!found) {
+			System.out.println("Error! No product with id " + id + " registered\n");
+		}
 	}
 
 	public void productInfo(int id) {
@@ -53,7 +45,7 @@ public class ProductLibrary {
 
 		}
 		if (!found) {
-			System.out.println("Error! No product with id " + id + " registered");
+			System.out.println("Error! No product with id " + id + " registered\n");
 		}
 	}
 
@@ -67,21 +59,36 @@ public class ProductLibrary {
 		return print;
 	}
 
-	public void writeBookToFile() throws IOException {
+	public void writeProductToFile() {
 
 		String filePath = "library.csv";
-		FileWriter fileWriter = new FileWriter(filePath);
-
-		for (Product products : products) {
-			fileWriter.write(products.csvRecord());
+		FileWriter fileWriter = null;
+		try {
+			fileWriter = new FileWriter(filePath);
+		} catch (IOException e) {
+			System.out.println("Could not create file");
 		}
-		fileWriter.close();
-
+		for (Product products : products) {
+			try {
+				fileWriter.write(products.csvRecord());
+			} catch (IOException e) {
+				System.out.println("Could not write to file");
+			}
+		}
+		try {
+			fileWriter.close();
+		} catch (IOException e) {
+			System.out.println("Problem closing writer");
+		}
 	}
 
-	public Product readFile() throws IOException {
-
-		FileReader fr = new FileReader("library.csv");
+	public Product readFile() {
+		FileReader fr = null;
+		try {
+			fr = new FileReader("library.csv");
+		} catch (IOException e) {
+			System.out.println("Could not find file");
+		}
 		Scanner scanner = new Scanner(fr);
 		while (scanner.hasNextLine()) {
 			String csvRecord = scanner.nextLine();
@@ -92,8 +99,7 @@ public class ProductLibrary {
 			}
 
 		}
-
 		return null;
-
 	}
+
 }
