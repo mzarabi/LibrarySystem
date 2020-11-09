@@ -65,7 +65,7 @@ public class LibraryManager {
 				System.out.println("Good bye!");
 				break;
 			case UNKNOWN:
-				System.out.println("Unknown command, type register try again\n");
+				System.out.println("Unknown command, please try again. If you need a command list, please type help \n");
 
 			}
 		}

@@ -1,14 +1,18 @@
 # LibrarySystem
 
-LibrarySystem is a system for handling a library filled with books and movies.
+LibrarySystem is a system for handling a simple library database filled with books and movies.
 
 ## Installation
 
+To download and use this software, simply download the repository as a zip file, unpack it on your local machine and import the folder to your IDE. Under the src folder, simply run the main.java file to run the software.
 
+Running the software straight from the CMD is also possible.
 
 ## Usage
 
-The program works so that the console asks for a command that the user enters to use and do various things, such as registering or lending a product. 
+The way the program works is that the console will let you enter different commands to add, remove and check different items in your library database. Such parameters as Title names, value of the product, author etc are added to each product.
+The software also allows you to lend an item to a customer and registers the name and number of that customer to make sure you can keep track of who is currently lending what item.
+ 
 
 Available commands:
 
