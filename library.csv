@@ -1,2 +1,6 @@
-movie,112,Die Hard,899,128,6.7
-book,223,Harry Potter,499,365,JK Rowling
+book;1001;The Lord of the Rings;549;684;J.R.R. Tolkien;(in stock)
+movie;1049;The Godfather;569;175;8.7;Borrowed by: Marcus Zarabi, 0736669492
+book;1083;Harry Potter;389;549;J.K. Rowling;(in stock)
+movie;1134;The Dark Night;689;152;9.0;Borrowed by: Kalle Johansson, 0736448483
+movie;1284;The Shawshank Redemption;399;142;9.3;(in stock)
+book;1739;The Da Vinci Code;899;672;Dan Brown;Borrowed by: Stefan Holmqvist, 0707112233
