@@ -82,7 +82,7 @@ public class LibraryManager {
 			addMovieCommand();
 		} else {
 			System.out.println("Unknown command, try again.\n");
-			return;
+			addProductCommand();
 		}
 	}
 
