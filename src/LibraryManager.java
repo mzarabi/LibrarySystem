@@ -17,7 +17,7 @@ public class LibraryManager {
 	public void start() {
 
 		boolean running = true;
-		System.out.println("Welcome! Please go ahead and use the Library program");
+		System.out.println("Welcome! Please go ahead and use the Library management program");
 		File bookFile = new File("library.csv");
 		File customerFile = new File("customer.csv");
 
@@ -28,8 +28,7 @@ public class LibraryManager {
 			}
 		}
 
-		System.out.println("\nCurrent inventory:");
-		System.out.println(productLibrary);
+		System.out.println("\nTo check your current inventory, please type 'list'");
 		System.out.println("Type 'help' to see available commands.\n");
 
 		while (running) {

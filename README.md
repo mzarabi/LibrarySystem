@@ -14,17 +14,22 @@ The way the program works is that the console will let you enter different comma
 The software also allows you to lend an item to a customer and registers the name and number of that customer to make sure you can keep track of who is currently lending what item.
  
 
-Available commands:
+Available commands: (all commands needs to be input in lowercase letters)
 
-* **REGISTER** - Add a product to the library.
-* **DEREGISTER** - Remove a product from the library.
-* **CHECKOUT** - Check out a product to a specifik customer from the library.
-* **CHECKIN** - Check in a product from the customer.
-* **LIST** - Gives you a full list of all the products in the library, including checked out products.
-* **INFO** - Gives you full info about a product.
-* **QUIT** - Exits the program.
+* **register** - Add a product to the library.
+* **deregister** - Remove a product from the library.
+* **checkout** - Check out a product to a specifik customer from the library.
+* **checkin** - Check in a product from the customer.
+* **list** - Gives you a full list of all the products in the library, including checked out products.
+* **info** - Gives you full info about a product.
+* **quit** - Exits the program.
 
-Some commands require the user to enter an argument in form of an **ID number**, these commands are: *deregister*, *checkout*, *checkin*, *info*.
+Some commands require the user to enter an argument in form of an **ID number**, these commands are:
+* **deregister** 
+* **checkout** 
+* **checkin** 
+* **info**
+
 You can also always see the available commands directly in the program by typing "help".
 
 ## Creators
