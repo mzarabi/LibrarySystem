@@ -168,7 +168,17 @@ public class LibraryManager {
 			return;
 
 		}
-		customerLibrary.checkOutProduct(ID);
+		boolean found = false;
+		for (int i = 0; i < LibraryInterface.products.size(); i++) {
+			if (LibraryInterface.products.get(i).getId() == ID) {
+				customerLibrary.checkOutProduct(ID);
+				found = true;
+			}
+		}
+		if (!found) {
+			System.out.println("Error! No product with ID " + ID + " is registered.\n");
+
+		}
 	}
 
 	public void checkInCommand(String[] arguments) {
@@ -178,10 +188,18 @@ public class LibraryManager {
 		} catch (Exception e) {
 			System.out.println("Syntax error! Please enter a valid ID number\n");
 			return;
+		}
+		boolean found = false;
+		for (int i = 0; i < LibraryInterface.products.size(); i++) {
+			if (LibraryInterface.products.get(i).getId() == ID) {
+				customerLibrary.checkInProduct(ID);
+				found = true;
+			}
+		}
+		if (!found) {
+			System.out.println("Error! No product with ID " + ID + " is registered.\n");
 
 		}
-
-		customerLibrary.checkInProduct(ID);
 	}
 
 	private void removeCommand(String[] arguments) {
