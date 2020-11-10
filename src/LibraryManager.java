@@ -17,7 +17,7 @@ public class LibraryManager {
 	public void start() {
 
 		boolean running = true;
-		System.out.println("Welcome!");
+		System.out.println("Welcome! please go ahead and use the Library program");
 		File bookFile = new File("library.csv");
 		File customerFile = new File("customer.csv");
 
@@ -63,10 +63,10 @@ public class LibraryManager {
 				break;
 			case QUIT:
 				running = false;
-				System.out.println("Good bye!");
+				System.out.println("Exiting Library program. Thanks for using this software");
 				break;
 			case UNKNOWN:
-				System.out.println("Unknown command, please try again.\n");
+				System.out.println("Unknown command, please try again. If you need a command list. Please type 'help'\n");
 
 			}
 		}
@@ -82,7 +82,7 @@ public class LibraryManager {
 		} else if (userInput.equals("m")) {
 			addMovieCommand();
 		} else {
-			System.out.println("Unknown command, try again.\n");
+			System.out.println("Unknown command, please try again.\n");
 			addProductCommand();
 		}
 	}
@@ -149,7 +149,7 @@ public class LibraryManager {
 			rating = sc.nextFloat();
 			sc.nextLine();
 		} catch (InputMismatchException e) {
-			System.out.println("Error! Rating has to be an Float comma-separated, type register to try again.\n");
+			System.out.println("Error! Rating has to be 2 digits comma-separated (e.g 7,3), type register to try again.\n");
 			sc.nextLine();
 			return;
 		}
