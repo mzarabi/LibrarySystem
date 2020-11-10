@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 enum Command {
@@ -145,9 +146,11 @@ public class LibraryManager {
 		}
 		System.out.println("\nEnter rating: ");
 		try {
-			rating = Float.parseFloat(sc.nextLine());
-		}catch(NumberFormatException e) {
-			System.out.println("Error! Rating has to be an Float, type register to try again.\n");
+			rating = sc.nextFloat();
+			sc.nextLine();
+		}catch(InputMismatchException e) {
+			System.out.println("Error! Rating has to be an Float comma-separated, type register to try again.\n");
+			sc.nextLine();
 			return;
 		}
 
