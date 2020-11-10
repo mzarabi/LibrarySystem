@@ -17,7 +17,7 @@ public class LibraryManager {
 	public void start() {
 
 		boolean running = true;
-		System.out.println("Welcome! please go ahead and use the Library program");
+		System.out.println("Welcome! Please go ahead and use the Library program");
 		File bookFile = new File("library.csv");
 		File customerFile = new File("customer.csv");
 
@@ -63,7 +63,7 @@ public class LibraryManager {
 				break;
 			case QUIT:
 				running = false;
-				System.out.println("Exiting Library program. Thanks for using this software");
+				System.out.println("Exiting Library program. Thank you for using this software");
 				break;
 			case UNKNOWN:
 				System.out.println("Unknown command, please try again. If you need a command list. Please type 'help'\n");
@@ -149,7 +149,7 @@ public class LibraryManager {
 			rating = sc.nextFloat();
 			sc.nextLine();
 		} catch (InputMismatchException e) {
-			System.out.println("Error! Rating has to be 2 digits comma-separated (e.g 7,3), type register to try again.\n");
+			System.out.println("Error! Rating has to be 2 digits comma-separated (e.ghel 7,3), type register to try again.\n");
 			sc.nextLine();
 			return;
 		}
@@ -221,14 +221,14 @@ public class LibraryManager {
 	}
 
 	public void helpCommand() {
-		System.out.println("Following functionalities are available: \n");
-		System.out.println("REGISTER- Add a product.");
-		System.out.println("DEREGISTER(ID)- Remove a product.");
-		System.out.println("LIST- Show a list of products in the library.");
-		System.out.println("INFO(ID)- See full info about a product.");
-		System.out.println("CHECKOUT(ID)- Check out a product.");
-		System.out.println("CHECKIN(ID)- Return a product.");
-		System.out.println("QUIT- Close the program.\n");
+		System.out.println("The following commands are available: \n");
+		System.out.println("'register' - Add a product.");
+		System.out.println("'deregister' + (ID) - Remove a product from the library.");
+		System.out.println("'list' - Show a list of products in the library.");
+		System.out.println("'info' + (ID) - See full info about a product.");
+		System.out.println("'checkout' + (ID) - Check out a product from the library to a customer.");
+		System.out.println("'checkin' + (ID)- Return a borrowed product from a customer.");
+		System.out.println("'quit' - Exit the program.\n");
 	}
 
 	private Command parseCommand(String userInput) {
