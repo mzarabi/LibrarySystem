@@ -1,5 +1,5 @@
 
-public class Movie extends Product implements ProductInterface {
+public class Movie extends Product {
 
 	private float rating;
 	private int length;

@@ -1,4 +1,4 @@
-public class Book extends Product implements ProductInterface {
+public class Book extends Product {
 
 	private int pages;
 	private String author;

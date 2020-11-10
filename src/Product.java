@@ -1,5 +1,5 @@
 
-public class Product implements ProductInterface, Comparable<Product> {
+public abstract class Product implements ProductInterface, Comparable<Product> {
 
 	protected int id;
 	protected String title;
