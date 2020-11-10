@@ -66,7 +66,7 @@ public class LibraryManager {
 				break;
 			case UNKNOWN:
 				System.out
-						.println("Unknown command, please try again. If you need a command list, please type help \n");
+						.println("Unknown command, please try again.\n");
 
 			}
 		}
