@@ -46,8 +46,7 @@ public class CustomerLibrary extends ProductLibrary implements LibraryInterface 
 			for (int j = 0; j < customers.size(); j++) {
 				if (products.get(i).getId() == ID) {
 					if (customers.get(j).getID() == ID) {
-						String status = "(Borrowed by: " + name + ", " + number + ")";
-						products.get(i).setStatus(status);
+						products.get(i).setStatus(customer.toString());
 						writeProductToFile();
 						writeCustomerToFile();
 						System.out.println("Successfully lended " + products.get(i).getTitle() + " to "

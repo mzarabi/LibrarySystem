@@ -26,6 +26,10 @@ public class Customer {
 	public String csvRecord() {
 		return String.format("%d,%s,%s", ID, name, number + "\n");
 	}
+	
+	public String toString() {
+		return String.format("(Borrowed by: " + name + ", " + number+")");
+	}
 
 	public static Customer parseCustomer(String csvRecord) {
 		String[] values = csvRecord.split(",");
