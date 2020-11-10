@@ -17,6 +17,7 @@ public class Book extends Product {
 		return author;
 	}
 
+	@Override
 	public String toString() {
 		return String.format(id + " (Book): " + title + ". " + status + "\n");
 	}

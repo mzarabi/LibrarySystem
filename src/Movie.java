@@ -19,6 +19,7 @@ public class Movie extends Product {
 		return length;
 	}
 
+	@Override
 	public String toString() {
 
 		return String.format(id + " (Movie): " + title + ". " + status + "\n");

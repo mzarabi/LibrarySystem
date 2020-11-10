@@ -35,7 +35,6 @@ public abstract class Product implements ProductInterface, Comparable<Product> {
 		return value;
 	}
 
-	@Override
 	public String printInfo() {
 		return String.format(id + " (type): " + title + ". " + status + "\n");
 
@@ -45,7 +44,6 @@ public abstract class Product implements ProductInterface, Comparable<Product> {
 		return Integer.compare(id, product.id);
 	}
 
-	@Override
 	public String csvRecord() {
 
 		return null;
