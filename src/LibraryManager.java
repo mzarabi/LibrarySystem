@@ -148,7 +148,7 @@ public class LibraryManager {
 		try {
 			rating = sc.nextFloat();
 			sc.nextLine();
-		}catch(InputMismatchException e) {
+		} catch (InputMismatchException e) {
 			System.out.println("Error! Rating has to be an Float comma-separated, type register to try again.\n");
 			sc.nextLine();
 			return;
