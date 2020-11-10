@@ -1,6 +1,6 @@
-movie;1001;The other guys;100;95;6.6;(in stock)
-movie;1002;The godfather;120;150;9.2;(in stock)
-book;1010;The lord of the rings: The fellowship of the ring;400;600;J.R.R Tolkien;(in stock)
-movie;1015;Kiss Kiss Bang Bang;80;113;7.5;** Currently borrowed by: Markus Zarabi, Phone number: 0707 - 111333 **
-book;1040;The Lord Of The Flies;90;400;William Golding;(in stock)
-book;1042;A Song Of Ice And Fire: A Feast For Crows;500;900;George R.R Martin;(in stock)
+movie;1001;The Other Guys;100;95;6.6;(in stock)
+movie;1002;The Godfather;120;150;9.2;(Borrowed by: Göran Persson, 0735-985452)
+book;1010;The Lord of the Rings;400;600;J.R.R Tolkien;(in stock)
+movie;1015;Kiss Kiss Bang Bang;80;113;7.5;(in stock)
+book;1040;The Lord of the Flies;90;400;William Golding;(Borrowed by: Sven Karlsson, 0707-745165)
+book;1042;A Song Of Ice And Fire;500;900;George R.R Martin;(in stock)
