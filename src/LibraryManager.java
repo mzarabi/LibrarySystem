@@ -145,9 +145,8 @@ public class LibraryManager {
 		}
 		System.out.println("\nEnter rating: ");
 		try {
-			rating = sc.nextFloat();
-			sc.nextLine();
-		} catch (NumberFormatException e) {
+			rating = Float.parseFloat(sc.nextLine());
+		}catch(NumberFormatException e) {
 			System.out.println("Error! Rating has to be an Float, type register to try again.\n");
 			return;
 		}
