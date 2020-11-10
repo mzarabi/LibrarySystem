@@ -7,7 +7,7 @@ enum Command {
 	LIST, CHECKOUT, CHECKIN, REGISTER, DEREGISTER, INFO, QUIT, UNKNOWN, HELP
 }
 
-public class LibraryManager {
+public class LibraryManager implements LibraryInterface {
 
 	ProductLibrary productLibrary = new ProductLibrary();
 	CustomerLibrary customerLibrary = new CustomerLibrary();
@@ -17,7 +17,7 @@ public class LibraryManager {
 	public void start() {
 
 		boolean running = true;
-		System.out.println("Welcome! Please go ahead and use the Library management program");
+		System.out.println("Welcome! Please go ahead and use the Library management program.");
 		File bookFile = new File("library.csv");
 		File customerFile = new File("customer.csv");
 
@@ -28,7 +28,7 @@ public class LibraryManager {
 			}
 		}
 
-		System.out.println("\nTo check your current inventory, please type 'list'");
+		System.out.println("\nTo check your current inventory, please type 'list'.");
 		System.out.println("Type 'help' to see available commands.\n");
 
 		while (running) {
@@ -92,7 +92,6 @@ public class LibraryManager {
 		int bookValue;
 		int pages;
 		String author;
-		String status = "(in stock)";
 
 		try {
 			System.out.println("\nEnter product ID: ");
@@ -113,7 +112,7 @@ public class LibraryManager {
 		System.out.println("\nEnter author: ");
 		author = sc.nextLine();
 
-		Book newBook = new Book(bookID, bookTitle, bookValue, pages, author, status);
+		Book newBook = new Book(bookID, bookTitle, bookValue, pages, author, inStock);
 		productLibrary.addProduct(newBook);
 
 	}
@@ -125,7 +124,6 @@ public class LibraryManager {
 		int movieValue;
 		int length;
 		float rating;
-		String status = "(in stock)";
 
 		try {
 			System.out.println("\nEnter product ID: ");
@@ -153,7 +151,7 @@ public class LibraryManager {
 			return;
 		}
 
-		Movie newMovie = new Movie(movieID, movieTitle, movieValue, length, rating, status);
+		Movie newMovie = new Movie(movieID, movieTitle, movieValue, length, rating, inStock);
 		productLibrary.addProduct(newMovie);
 
 	}

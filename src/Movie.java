@@ -22,18 +22,18 @@ public class Movie extends Product {
 	@Override
 	public String toString() {
 
-		return String.format(id + " (Movie): " + title + ". " + status + "\n");
+		return String.format(id + movieStamp + title + ". " + status + "\n");
 	}
 
 	@Override
 	public String printInfo() {
-		return String.format(id + " (Movie): " + title + ": " + "Value " + value + "kr, " + "Length " + length + "m, "
+		return String.format(id + movieStamp + title + ": " + "Value " + value + "kr, " + "Length " + length + "m, "
 				+ "Rating " + rating + "." + "\n");
 	}
 
 	@Override
 	public String csvRecord() {
-		return String.format("movie;" + "%d;%s;%d;%d;%s;%s", id, title, value, length, rating, status + "\n");
+		return String.format(movieStamp + ";%d;%s;%d;%d;%s;%s", id, title, value, length, rating, status + "\n");
 	}
 
 	public static Movie parseProduct(String csvRecord) {

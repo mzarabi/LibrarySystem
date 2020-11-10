@@ -92,9 +92,9 @@ public class ProductLibrary implements LibraryInterface {
 		Scanner scanner = new Scanner(fr);
 		while (scanner.hasNextLine()) {
 			String csvRecord = scanner.nextLine();
-			if (csvRecord.contains("book")) {
+			if (csvRecord.contains(bookStamp)) {
 				products.add(Book.parseProduct(csvRecord));
-			} else {
+			} else if (csvRecord.contains(movieStamp)){
 				products.add(Movie.parseProduct(csvRecord));
 			}
 

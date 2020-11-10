@@ -19,18 +19,18 @@ public class Book extends Product {
 
 	@Override
 	public String toString() {
-		return String.format(id + " (Book): " + title + ". " + status + "\n");
+		return String.format(id + bookStamp + title + ". " + status + "\n");
 	}
 
 	@Override
 	public String printInfo() {
-		return String.format(id + " (Book): " + title + ": " + "Value " + value + "kr, " + "Pages " + pages + "st, "
+		return String.format(id + bookStamp + title + ": " + "Value " + value + "kr, " + "Pages " + pages + "st, "
 				+ "Author " + author + "." + "\n");
 	}
 
 	@Override
 	public String csvRecord() {
-		return String.format("book;" + "%d;%s;%d;%d;%s;%s", id, title, value, pages, author, status + "\n");
+		return String.format(bookStamp + ";%d;%s;%d;%d;%s;%s", id, title, value, pages, author, status + "\n");
 	}
 
 	public static Book parseProduct(String csvRecord) {

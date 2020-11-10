@@ -67,7 +67,7 @@ public class CustomerLibrary extends ProductLibrary implements LibraryInterface 
 			for (int j = 0; j < customers.size(); j++)
 				if (products.get(i).getId() == id) {
 					if (customers.get(j).getID() == id) {
-						products.get(i).setStatus("(in stock)");
+						products.get(i).setStatus(inStock);
 						System.out.println("Succesfully returned " + products.get(i).getTitle() + " from "
 								+ customers.get(j).getName() + "\n");
 						customers.remove(j);
